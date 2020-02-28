@@ -83,7 +83,7 @@ namespace Common.Services
 
             public override ServiceHost Build()
             {
-                throw new NotImplementedException();
+                return new ServiceHost(host);
             }
         }
     }
