@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Activities.Handlers;
 using Common.Commands;
-using Common.RabbitMq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Activities
+namespace Identity
 {
     public class Startup
     {
@@ -28,8 +26,6 @@ namespace Activities
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRabbitMq(Configuration);
-            services.AddScoped<ICommandHandler<CreateActivityCommand>, CreateActivityHandler>();
             services.AddControllers();
         }
 

@@ -1,6 +1,10 @@
 ﻿using Common.Commands;
 using Common.Events;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using RawRabbit;
+using RawRabbit.DependencyInjection.ServiceCollection;
+using RawRabbit.Instantiation;
 using RawRabbit.Pipe;
 using System;
 using System.Collections.Generic;
@@ -24,5 +28,17 @@ namespace Common.RabbitMq
 
         private static string GetQueueName<T>()
             => $"{Assembly.GetEntryAssembly().GetName()}/{typeof(T).Name}";
+
+        public static IServiceCollection AddRabbitMq(this IServiceCollection service, IConfiguration configuration)
+        {
+            var RabbitMq = new RabbitMqOptions();
+            var section = configuration.GetSection(nameof(RabbitMq));
+            section.Bind(RabbitMq);
+            var client = RawRabbitFactory.CreateSingleton(new RawRabbitOptions
+            {
+                ClientConfiguration = RabbitMq
+            });
+            return service.AddSingleton<IBusClient>(client);
+        }
     }
 }

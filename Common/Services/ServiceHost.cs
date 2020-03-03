@@ -18,18 +18,19 @@ namespace Common.Services
         public ServiceHost(IHost host) => this.host = host;
         public async Task Run() => await host.RunAsync();
 
-        public static IHostBuilder CreateHostBuilder<TStartup>(string[] args) where TStartup : class =>
-            Host.CreateDefaultBuilder(args)
+        public static HostBuilder CreateHostBuilder<TStartup>(string[] args) where TStartup : class =>
+           new HostBuilder(Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseDefaultServiceProvider(options => options.ValidateScopes = false);
                     webBuilder.UseStartup<TStartup>();
-                });
+                }).Build());
 
-        private abstract class BuilderBase
+        public abstract class BuilderBase
         {
             public abstract ServiceHost Build();
         }
-        private class HostBuilder : BuilderBase
+        public class HostBuilder : BuilderBase
         {
             private readonly IHost host;
             private IBusClient busClient;
@@ -50,7 +51,7 @@ namespace Common.Services
             }
         }
 
-        private class BusBuilder : BuilderBase
+        public class BusBuilder : BuilderBase
         {
             private readonly IHost host;
             private IBusClient busClient;

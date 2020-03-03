@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Activities
+namespace Identity
 {
     public class Program
     {
@@ -21,6 +21,5 @@ namespace Activities
                 .Build()
                 .Run();
         }
-
     }
 }
