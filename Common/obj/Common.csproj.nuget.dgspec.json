@@ -41,6 +41,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.10.2, )"
+            },
+            "MongoDB.Driver.Core": {
+              "target": "Package",
+              "version": "[2.10.2, )"
+            },
             "RawRabbit": {
               "target": "Package",
               "version": "[2.0.0-rc5, )"

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Activities.Handlers;
 using Common.Commands;
+using Common.Mongo;
 using Common.RabbitMq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,7 @@ namespace Activities
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMongoDb(Configuration);
             services.AddRabbitMq(Configuration);
             services.AddScoped<ICommandHandler<CreateActivityCommand>, CreateActivityHandler>();
             services.AddControllers();

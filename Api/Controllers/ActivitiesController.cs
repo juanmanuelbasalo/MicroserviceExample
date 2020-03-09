@@ -18,7 +18,7 @@ namespace Api.Controllers
         {
             this.busClient = busClient;
         }
-        // GET: api/Activities
+  
         [HttpPost("CreateActivity")]
         public async Task<ActionResult> CreateActivity([FromBody] CreateActivityCommand command)
         {
