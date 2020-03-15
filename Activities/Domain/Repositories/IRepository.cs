@@ -8,12 +8,12 @@ namespace Activities.Domain.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        IQueryable<TEntity> GetAll();
-        void Insert(TEntity entity);
-        void Delete(TEntity entity);
-        void Update(TEntity entity);
-        TEntity Find(Expression<Func<TEntity, bool>> searchTerm);
-        IEnumerable<TEntity> FindAll(Expression<Func<TEntity, bool>> searchTerm);
+        Task<IEnumerable<TEntity>> GetAllAsync();
+        Task InsertAsync(TEntity entity);
+        Task DeleteAsync(TEntity entity);
+        Task UpdateAsync(TEntity entity);
+        Task<TEntity> FindAsync(Expression<Func<TEntity, bool>> searchTerm);
+        Task<IEnumerable<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> searchTerm);
         Task<bool> SaveAsync();
     }
 }

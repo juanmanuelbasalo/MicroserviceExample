@@ -26,7 +26,8 @@ namespace Common.Mongo
 
                      return client.GetDatabase(options.Value.Database);
                  })
-                 .AddScoped<IDatabaseInitializer, MongoInitializer>();
+                 .AddScoped<IDatabaseInitializer, MongoInitializer>()
+                 .AddScoped<IDatabaseSeeder, MongoSeeder>();
         }
     }
 }

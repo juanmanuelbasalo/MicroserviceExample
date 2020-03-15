@@ -9,6 +9,6 @@ namespace Activities.Domain.Services
     public interface IActivityService
     {
         Task<Activity> GetAsync(string name);
-        Task<Activity> AddAsync(Activity category);
+        Task AddAsync(Activity activity);
     }
 }

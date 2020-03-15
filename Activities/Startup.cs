@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Activities.Domain.Repositories;
+using Activities.ExtensionMethods;
 using Activities.Handlers;
 using Common.Commands;
 using Common.Mongo;
@@ -32,6 +34,8 @@ namespace Activities
             services.AddMongoDb(Configuration);
             services.AddRabbitMq(Configuration);
             services.AddScoped<ICommandHandler<CreateActivityCommand>, CreateActivityHandler>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddCustomScoppedServices();
             services.AddControllers();
         }
 
@@ -42,6 +46,8 @@ namespace Activities
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.ApplicationServices.GetService<IDatabaseInitializer>().InitializeAsync();
 
             app.UseHttpsRedirection();
 

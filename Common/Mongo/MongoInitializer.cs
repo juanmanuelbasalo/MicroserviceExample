@@ -14,11 +14,13 @@ namespace Common.Mongo
         private bool initialized;
         private readonly bool seed;
         private readonly IMongoDatabase database;
+        private readonly IDatabaseSeeder databaseSeeder;
 
-        public MongoInitializer(IOptions<MongoOptions> options, IMongoDatabase database)
+        public MongoInitializer(IOptions<MongoOptions> options, IMongoDatabase database, IDatabaseSeeder databaseSeeder)
         {
             this.database = database;
             seed = options.Value.Seed;
+            this.databaseSeeder = databaseSeeder;
         }
         public async Task InitializeAsync()
         {
@@ -26,6 +28,7 @@ namespace Common.Mongo
             RegisterConventions();
             initialized = true;
             if (!seed) return;
+            await databaseSeeder.SeedAsync();
         }
 
         private void RegisterConventions()

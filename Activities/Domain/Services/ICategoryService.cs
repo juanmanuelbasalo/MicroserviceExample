@@ -10,6 +10,6 @@ namespace Activities.Domain.Services
     {
         Task<Category> GetAsync(string name);
         Task<IEnumerable<Category>> BrowseAsync();
-        Task<Category> AddAsync(Category category);
+        Task AddAsync(Category category);
     }
 }
