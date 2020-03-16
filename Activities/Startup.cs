@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Activities.Domain.Repositories;
 using Activities.ExtensionMethods;
 using Activities.Handlers;
+using AutoMapper;
 using Common.Commands;
 using Common.Mongo;
 using Common.RabbitMq;
@@ -33,6 +34,7 @@ namespace Activities
         {
             services.AddMongoDb(Configuration);
             services.AddRabbitMq(Configuration);
+            services.AddAutoMapper(typeof(Startup));
             services.AddScoped<ICommandHandler<CreateActivityCommand>, CreateActivityHandler>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddCustomScoppedServices();
@@ -40,7 +42,7 @@ namespace Activities
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMapper mapper)
         {
             if (env.IsDevelopment())
             {
@@ -48,6 +50,7 @@ namespace Activities
             }
 
             app.ApplicationServices.GetService<IDatabaseInitializer>().InitializeAsync();
+            mapper.ConfigurationProvider.AssertConfigurationIsValid();
 
             app.UseHttpsRedirection();
 

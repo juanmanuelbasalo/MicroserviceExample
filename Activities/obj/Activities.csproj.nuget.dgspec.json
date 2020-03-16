@@ -1,37 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JB_28\\source\\repos\\MicroservicesExample\\Activities\\Activities.csproj": {}
+    "C:\\Users\\Juan Basalo\\Desktop\\MicroservicesExample\\MicroserviceExample\\Activities\\Activities.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JB_28\\source\\repos\\MicroservicesExample\\Activities\\Activities.csproj": {
+    "C:\\Users\\Juan Basalo\\Desktop\\MicroservicesExample\\MicroserviceExample\\Activities\\Activities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JB_28\\source\\repos\\MicroservicesExample\\Activities\\Activities.csproj",
+        "projectUniqueName": "C:\\Users\\Juan Basalo\\Desktop\\MicroservicesExample\\MicroserviceExample\\Activities\\Activities.csproj",
         "projectName": "Activities",
-        "projectPath": "C:\\Users\\JB_28\\source\\repos\\MicroservicesExample\\Activities\\Activities.csproj",
-        "packagesPath": "C:\\Users\\JB_28\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JB_28\\source\\repos\\MicroservicesExample\\Activities\\obj\\",
+        "projectPath": "C:\\Users\\Juan Basalo\\Desktop\\MicroservicesExample\\MicroserviceExample\\Activities\\Activities.csproj",
+        "packagesPath": "C:\\Users\\Juan Basalo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Juan Basalo\\Desktop\\MicroservicesExample\\MicroserviceExample\\Activities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\JB_28\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Juan Basalo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\DevExpress 18.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\JB_28\\source\\repos\\MicroservicesExample\\Common\\Common.csproj": {
-                "projectPath": "C:\\Users\\JB_28\\source\\repos\\MicroservicesExample\\Common\\Common.csproj"
+              "C:\\Users\\Juan Basalo\\Desktop\\MicroservicesExample\\MicroserviceExample\\Common\\Common.csproj": {
+                "projectPath": "C:\\Users\\Juan Basalo\\Desktop\\MicroservicesExample\\MicroserviceExample\\Common\\Common.csproj"
               }
             }
           }
@@ -44,6 +46,16 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -62,30 +74,32 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200-preview-015002\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\JB_28\\source\\repos\\MicroservicesExample\\Common\\Common.csproj": {
+    "C:\\Users\\Juan Basalo\\Desktop\\MicroservicesExample\\MicroserviceExample\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JB_28\\source\\repos\\MicroservicesExample\\Common\\Common.csproj",
+        "projectUniqueName": "C:\\Users\\Juan Basalo\\Desktop\\MicroservicesExample\\MicroserviceExample\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "C:\\Users\\JB_28\\source\\repos\\MicroservicesExample\\Common\\Common.csproj",
-        "packagesPath": "C:\\Users\\JB_28\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JB_28\\source\\repos\\MicroservicesExample\\Common\\obj\\",
+        "projectPath": "C:\\Users\\Juan Basalo\\Desktop\\MicroservicesExample\\MicroserviceExample\\Common\\Common.csproj",
+        "packagesPath": "C:\\Users\\Juan Basalo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Juan Basalo\\Desktop\\MicroservicesExample\\MicroserviceExample\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\JB_28\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Juan Basalo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\DevExpress 18.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -103,6 +117,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[2.10.2, )"
@@ -146,7 +168,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200-preview-015002\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
