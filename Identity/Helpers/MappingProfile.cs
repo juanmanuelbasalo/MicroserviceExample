@@ -1,16 +1,16 @@
-﻿using Activities.Domain.Entities;
-using AutoMapper;
+﻿using AutoMapper;
 using Common.Commands;
+using Identity.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Activities.Helpers
+namespace Identity.Helpers
 {
     public class MappingProfile : Profile
     {
         public MappingProfile()
-            => CreateMap<Activity,CreateActivityCommand>().ReverseMap();
+            => CreateMap<User, CreateUserCommand>().ReverseMap();
     }
 }

@@ -9,7 +9,7 @@ namespace Identity.Domain.Entities
 {
     public class User
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; protected set; } = Guid.NewGuid();
         [Required(ErrorMessage = "Activity name can not be empty.")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Activity name can not be empty.")]
@@ -18,16 +18,16 @@ namespace Identity.Domain.Entities
         [Required(ErrorMessage = "A password is required")]
         [StringLength(maximumLength: 15, MinimumLength = 6, ErrorMessage = "Between 6 and 15 characters.")]
         public string Password { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; } = DateTime.UtcNow;
         public string CreatedBy { get; set; }
 
-        public void SetPassword(string password)
+        public void SetPasswordToHashed(string password)
         {
             var hashedPassword = SecurePasswordHasher.Hash(password);
             Password = hashedPassword;
         }
 
-        public bool ValidatePassword(string password)
+        public bool ValidPassword(string password)
         {
             var isValid = SecurePasswordHasher.IsValid(password, Password);
 

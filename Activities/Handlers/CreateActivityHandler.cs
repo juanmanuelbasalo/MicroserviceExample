@@ -38,7 +38,6 @@ namespace Activities.Handlers
 
                 await busClient.PublishAsync(new ActivityCreatedEvent(command.Id, command.UserId, command.Category, command.Name, command.Description
                                             ,command.CreatedBy, command.CreatedAt));
-                return;
             }
             catch (CustomException ex)
             {

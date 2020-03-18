@@ -23,9 +23,6 @@ namespace Api.Controllers
         [HttpPost("RegisterUser")]
         public async Task<ActionResult> CreateActivity([FromBody] CreateUserCommand command)
         {   
-            var createdAt = DateTime.UtcNow;
-            command.CreatedAt = createdAt;
-
             await busClient.PublishAsync(command);
             return Accepted();
         }
