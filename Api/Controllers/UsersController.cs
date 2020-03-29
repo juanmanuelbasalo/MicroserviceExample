@@ -21,7 +21,7 @@ namespace Api.Controllers
         }
         // GET: api/Activities
         [HttpPost("RegisterUser")]
-        public async Task<ActionResult> CreateActivity([FromBody] CreateUserCommand command)
+        public async Task<ActionResult> CreateUser([FromBody] CreateUserCommand command)
         {   
             await busClient.PublishAsync(command);
             return Accepted();

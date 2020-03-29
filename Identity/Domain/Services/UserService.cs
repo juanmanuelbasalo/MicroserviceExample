@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.Auth;
 using Common.Exceptions;
 using Identity.Domain.Entities;
 using Identity.Domain.Repositories;
@@ -11,12 +12,14 @@ namespace Identity.Domain.Services
     public class UserService : IUserService
     {
         private readonly IRepository<User> repository;
+        private readonly IJwtHandler jwtHandler;
 
-        public UserService(IRepository<User> repository)
+        public UserService(IRepository<User> repository, IJwtHandler jwtHandler)
         {
             this.repository = repository;
+            this.jwtHandler = jwtHandler;
         }
-        public async Task Login(string email, string password)
+        public async Task<CustomJsonWebToken> LoginAsync(string email, string password)
         {
             var user = await repository.FindAsync(u => u.Equals(email)) ?? 
                 throw new CustomException("invalid_credentials", $"Invalid credentials");
@@ -25,6 +28,8 @@ namespace Identity.Domain.Services
             {
                 throw new CustomException("invalid_credentials", $"Invalid credentials");
             }
+
+            return jwtHandler.Create(user.Id);
         }
 
         public async Task RegisterAsync(User user)

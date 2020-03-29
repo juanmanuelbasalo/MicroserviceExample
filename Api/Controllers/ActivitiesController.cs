@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Common.Commands;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RawRabbit;
@@ -18,7 +20,7 @@ namespace Api.Controllers
         {
             this.busClient = busClient;
         }
-  
+
         [HttpPost("CreateActivity")]
         public async Task<ActionResult> CreateActivity([FromBody] CreateActivityCommand command)
         {
@@ -30,5 +32,9 @@ namespace Api.Controllers
             await busClient.PublishAsync(command);
             return Accepted($"Activities/{command.Id}");
         }
+
+        [HttpGet("GetActivity")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public ActionResult Get() => Content("Secured");
     }
 }

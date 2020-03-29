@@ -11,7 +11,7 @@ namespace Common.Events
         public string Reason { get; }
         public string Code { get; }
 
-        public CreateActivityRejected(Guid id, string reason, string code)
+        public CreateActivityRejectedEvent(Guid id, string reason, string code)
         {
             Id = id;
             Reason = reason;

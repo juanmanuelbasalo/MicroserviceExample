@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Api.Handlers;
+using Common.Auth;
 using Common.Events;
 using Common.RabbitMq;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,7 @@ namespace Api
             services.AddRabbitMq(Configuration);
             services.AddScoped<IEventHandler<ActivityCreatedEvent>, ActivityCreatedHandler>();
             services.AddControllers();
+            services.AddJwt(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

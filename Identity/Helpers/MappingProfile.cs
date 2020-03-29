@@ -11,6 +11,8 @@ namespace Identity.Helpers
     public class MappingProfile : Profile
     {
         public MappingProfile()
-            => CreateMap<User, CreateUserCommand>().ReverseMap();
+        {
+            CreateMap<User, CreateUserCommand>().ReverseMap();
+        }
     }
 }

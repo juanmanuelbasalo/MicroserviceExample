@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Common.Auth;
 using Common.Commands;
 using Common.Mongo;
 using Common.RabbitMq;
@@ -40,6 +41,7 @@ namespace Identity
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<ICommandHandler<CreateUserCommand>, CreateUserHandler>();
             services.AddCustomScoppedServices();
+            services.AddJwt(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

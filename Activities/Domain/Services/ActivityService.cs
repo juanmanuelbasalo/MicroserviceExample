@@ -20,8 +20,8 @@ namespace Activities.Domain.Services
 
         public async Task AddAsync(Activity activity)
         {
-            var activityCategory = await categoryRepository.FindAsync(i => i.Name.Equals(activity.Category.Name)) 
-                ?? throw new CustomException("category_not_found",$"Category: {activity.Category.Name} was not found");
+            var activityCategory = await categoryRepository.FindAsync(i => i.Name.Equals(activity.Category)) 
+                ?? throw new CustomException("category_not_found",$"Category: {activity.Category} was not found");
 
             await activityRepository.InsertAsync(activity);
         }

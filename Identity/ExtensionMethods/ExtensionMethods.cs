@@ -11,7 +11,7 @@ namespace Identity.ExtensionMethods
     public static class ExtensionMethods
     {
         public static IServiceCollection AddCustomScoppedServices(this IServiceCollection service)
-            => service.AddScoped<IUserService, UserService>()
+            => service.AddScoped<IUserService, UserService>();
          
     }
 }
