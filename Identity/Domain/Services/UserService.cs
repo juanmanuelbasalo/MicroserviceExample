@@ -21,7 +21,7 @@ namespace Identity.Domain.Services
         }
         public async Task<CustomJsonWebToken> LoginAsync(string email, string password)
         {
-            var user = await repository.FindAsync(u => u.Equals(email)) ?? 
+            var user = await repository.FindAsync(u => u.Email.Equals(email)) ?? 
                 throw new CustomException("invalid_credentials", $"Invalid credentials");
 
             if (!user.ValidPassword(password))

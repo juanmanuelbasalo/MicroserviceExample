@@ -17,7 +17,7 @@ namespace Identity
         {
             await ServiceHost.CreateHostBuilder<Startup>(args)
                 .UseRabbitMq()
-                .SubscribeToCommand<CreateActivityCommand>()
+                .SubscribeToCommand<CreateUserCommand>()
                 .Build()
                 .Run();
         }
