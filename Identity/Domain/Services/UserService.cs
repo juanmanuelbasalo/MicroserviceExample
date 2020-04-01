@@ -4,17 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Common.Auth;
 using Common.Exceptions;
+using Common.Repositories;
 using Identity.Domain.Entities;
-using Identity.Domain.Repositories;
 
 namespace Identity.Domain.Services
 {
     public class UserService : IUserService
     {
-        private readonly IRepository<User> repository;
+        private readonly IMongoRepository<User> repository;
         private readonly IJwtHandler jwtHandler;
 
-        public UserService(IRepository<User> repository, IJwtHandler jwtHandler)
+        public UserService(IMongoRepository<User> repository, IJwtHandler jwtHandler)
         {
             this.repository = repository;
             this.jwtHandler = jwtHandler;

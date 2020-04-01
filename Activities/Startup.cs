@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Activities.Domain.Repositories;
 using Activities.ExtensionMethods;
 using Activities.Handlers;
 using AutoMapper;
 using Common.Commands;
 using Common.Mongo;
 using Common.RabbitMq;
+using Common.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,7 +36,7 @@ namespace Activities
             services.AddRabbitMq(Configuration);
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<ICommandHandler<CreateActivityCommand>, CreateActivityHandler>();
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
             services.AddCustomScoppedServices();
             services.AddControllers();
         }

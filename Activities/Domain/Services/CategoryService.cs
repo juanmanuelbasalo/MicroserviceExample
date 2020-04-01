@@ -1,5 +1,5 @@
 ﻿using Activities.Domain.Entities;
-using Activities.Domain.Repositories;
+using Common.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +9,8 @@ namespace Activities.Domain.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly IRepository<Category> repository;
-        public CategoryService(IRepository<Category> repository)
+        private readonly IMongoRepository<Category> repository;
+        public CategoryService(IMongoRepository<Category> repository)
         {
             this.repository = repository;
         }

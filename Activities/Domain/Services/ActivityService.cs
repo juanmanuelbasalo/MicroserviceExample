@@ -1,6 +1,6 @@
 ﻿using Activities.Domain.Entities;
-using Activities.Domain.Repositories;
 using Common.Exceptions;
+using Common.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +10,9 @@ namespace Activities.Domain.Services
 {
     public class ActivityService : IActivityService
     {
-        private readonly IRepository<Activity> activityRepository;
-        private readonly IRepository<Category> categoryRepository;
-        public ActivityService(IRepository<Activity> activityRepository, IRepository<Category> categoryRepository)
+        private readonly IMongoRepository<Activity> activityRepository;
+        private readonly IMongoRepository<Category> categoryRepository;
+        public ActivityService(IMongoRepository<Activity> activityRepository, IMongoRepository<Category> categoryRepository)
         {
             this.categoryRepository = categoryRepository;
             this.activityRepository = activityRepository;

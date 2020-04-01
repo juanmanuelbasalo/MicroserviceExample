@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Identity.Domain.Repositories
+namespace Common.Repositories
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IMongoRepository<TEntity> where TEntity : class
     {
         Task<IEnumerable<TEntity>> GetAllAsync();
         Task InsertAsync(TEntity entity);

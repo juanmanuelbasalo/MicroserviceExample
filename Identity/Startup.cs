@@ -7,7 +7,7 @@ using Common.Auth;
 using Common.Commands;
 using Common.Mongo;
 using Common.RabbitMq;
-using Identity.Domain.Repositories;
+using Common.Repositories;
 using Identity.ExtensionMethods;
 using Identity.Handlers;
 using Microsoft.AspNetCore.Builder;
@@ -38,7 +38,7 @@ namespace Identity
             services.AddMongoDb(Configuration);
             services.AddLogging();
             services.AddRabbitMq(Configuration);
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
             services.AddScoped<ICommandHandler<CreateUserCommand>, CreateUserHandler>();
             services.AddCustomScoppedServices();
             services.AddJwt(Configuration);

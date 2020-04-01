@@ -1,7 +1,7 @@
 ﻿using Activities.Domain.Entities;
-using Activities.Domain.Repositories;
 using Activities.Domain.Services;
 using Common.Mongo;
+using Common.Repositories;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -12,8 +12,8 @@ namespace Activities.MongoServices
 {
     public class CustomMongoSeeder : MongoSeeder 
     {
-        private readonly IRepository<Category> categoryRepository;
-        public CustomMongoSeeder(IMongoDatabase mongoDb, IRepository<Category> categoryRepository) : base(mongoDb)
+        private readonly IMongoRepository<Category> categoryRepository;
+        public CustomMongoSeeder(IMongoDatabase mongoDb, IMongoRepository<Category> categoryRepository) : base(mongoDb)
             => this.categoryRepository = categoryRepository;
 
         protected override async Task CustomSeedAsync()
