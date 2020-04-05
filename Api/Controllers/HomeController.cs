@@ -12,7 +12,7 @@ namespace Api.Controllers
     public class HomeController : ControllerBase
     {
         // GET: api/Home
-        [HttpGet]
+        [HttpGet("")]
         [ProducesResponseType(200)]
         public ActionResult Get() => Content("Testing Microservices.");
     }

@@ -34,11 +34,10 @@ namespace Common.Auth
         }
         public CustomJsonWebToken Create(Guid userId)
         {
-            var nowUtc = DateTime.UtcNow;
+            var nowUtc = DateTimeOffset.UtcNow;
             var expiration = nowUtc.AddMinutes(jwtOptions.ExpiryMinutes);
-            var centuryBegin = new DateTime(1970, 1, 1).ToUniversalTime();
-            var exp = (long)(new TimeSpan(expiration.Ticks - centuryBegin.Ticks).TotalSeconds);
-            var now = (long)(new TimeSpan(nowUtc.Ticks - centuryBegin.Ticks).TotalSeconds);
+            var exp = expiration.ToUnixTimeSeconds();
+            var now = nowUtc.ToUnixTimeSeconds();
             var payload = new JwtPayload
             {
                 {"sub", userId},
