@@ -1,0 +1,55 @@
+version: '3.4'
+
+services:
+  start-dependencies:
+    image: dadarek/wait-for-dependencies
+    depends_on:
+      - mongo
+      - rabbitmq
+    command: rabbitmq:5672
+    
+  api:
+    image: ${DOCKER_REGISTRY-}api
+    build:
+      context: .
+      dockerfile: Api/Dockerfile
+    links:
+      - rabbitmq
+      - mongo
+    ports:
+      - '5000:5000'
+
+  activities:
+    image: ${DOCKER_REGISTRY-}activities
+    build:
+      context: .
+      dockerfile: Activities/Dockerfile
+    links:
+      - rabbitmq
+      - mongo
+    ports:
+      - '5050:5050'
+
+  identity:
+    image: ${DOCKER_REGISTRY-}identity
+    build:
+      context: .
+      dockerfile: Identity/Dockerfile
+    links:
+      - rabbitmq
+      - mongo
+    ports:
+      - '5051:5051'
+
+  mongo:
+    image: mongo
+    volumes: 
+      - ./data/db:/data/db
+    ports:
+      - '27017:27017'
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - '5672:5672'
+      - '15672:15672'

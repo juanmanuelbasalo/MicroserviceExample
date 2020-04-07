@@ -18,12 +18,21 @@
     },
     "Api": {
       "commandName": "Project",
-      "launchBrowser": false,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/weatherforecast",
+      "environmentVariables": {
+        "ASPNETCORE_URLS": "http://*:5000"
+      },
+      "useSSL": false,
+      "sslPort": 44318
     }
   }
 }
